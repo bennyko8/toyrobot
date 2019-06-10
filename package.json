@@ -1,0 +1,27 @@
+{
+  "name": "toyrobot",
+  "version": "1.0.0",
+  "description": "Toy Robot simulator",
+  "main": "index.js",
+  "directories": {
+    "test":"./app"
+  },
+  "scripts": {
+    "test": "jest --watchAll",
+    "dev": "parcel src/index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "jest": "^24.8.0",
+    "parcel-bundler": "^1.12.3"
+  },
+  "dependencies": {
+    "err": "^2.1.11",
+    "mocha": "^6.1.4"
+  }
+}
