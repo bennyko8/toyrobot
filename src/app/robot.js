@@ -5,6 +5,12 @@ const directions = {
     West: "West"
 };
 
+const limts = {
+    min:0,
+    x:4,
+    y:4
+}
+
 class Robot {
     constructor () {
         this.x = null;
@@ -13,14 +19,16 @@ class Robot {
         this.placed = false; 
     }
     
+    //Check valid x and y coordinates 
     checkValidPosition(x,y){
-        if(x<=4 && x>=0 && y<=4 && y>=0){
+        if(x<=limts.x && x>=limts.min && y<=limts.y && y>=limts.min){
             return true;
         }else{
             return false;
         }
     }
 
+    //Check direction facing 
     checkValidDirection(face){
         if(face===directions.North || face===directions.South || face===directions.East || face===directions.West){
             return true;
@@ -28,7 +36,9 @@ class Robot {
         return false;
     }
 
+    
     place(x,y,face) {
+        //assign x and y coordinates once valid
         if(this.checkValidPosition(x,y)){
             this.x=x;
             this.y=y;
@@ -36,6 +46,7 @@ class Robot {
             return "Invalid position";
         }
 
+        //assign direction facing once valid
         if(this.checkValidDirection(face)){
             this.face=face; 
         } else {
@@ -46,6 +57,7 @@ class Robot {
         return this;
     }
 
+    //remove the robot from the board 
     remove(){
         this.x=null;
         this.y=null;
@@ -55,7 +67,9 @@ class Robot {
 
     }
 
+ 
     report(){
+        //print current coordinates and facing direction if placed 
         if(this.placed){
             console.log(`${this.x}, ${this.y}, ${this.face}`);
             return this;
@@ -65,6 +79,7 @@ class Robot {
     }
 
     move(){
+        //Each if statement checks if the move would exceed the table
         if(this.face===directions.North){
             if(this.y+1<=4){
                 this.y=this.y+1; 
@@ -100,7 +115,7 @@ class Robot {
     }
 
     right(){
-
+        // Check to see if the robot is placed before moving right
         if(this.place){
             if(this.face==directions.North){
                 this.face=directions.East;
@@ -118,6 +133,7 @@ class Robot {
 
     }
 
+    // Check to see if the robot is placed before moving left
     left(){
 
         if(this.place){
